@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>補助金レーダー｜自社が使える補助金・助成金が30秒でわかる無料診断</title>
+<meta name="description" content="中小企業・個人事業の経営者向け。3つの質問に答えるだけで、あなたの会社が今使える国の補助金・助成金がわかる無料診断。公募開始・締切のお知らせも無料。情報源はすべて中小企業庁・厚生労働省の公式。">
+<meta property="og:title" content="補助金レーダー｜自社が使える補助金が30秒でわかる無料診断">
+<meta property="og:description" content="3問に答えるだけ。あなたの会社が今使える国の補助金・助成金がわかります。出典はすべて公式。">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://senahatowa.github.io/subsidy-radar/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"補助金レーダー","url":"https://senahatowa.github.io/subsidy-radar/","description":"中小企業・個人事業の経営者向け。自社が使える補助金・助成金が30秒でわかる無料診断と、公式情報をもとにした解説メディア。","inLanguage":"ja","publisher":{"@type":"Organization","name":"補助金レーダー"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16202c; --ink-soft:#46535f; --paper:#f6f4ef; --card:#ffffff;
+    --navy:#0f2540; --navy-2:#1b3a5c; --gold:#b8924f; --gold-dim:#8a6d39;
+    --line:#e6e1d6; --line-2:#d9d2c4; --ok:#1f7a4d; --shadow:0 12px 40px rgba(15,37,64,.10);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Noto Sans JP",system-ui,-apple-system,sans-serif;color:var(--ink);
+    background:var(--paper);line-height:1.8;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:"Noto Serif JP","Noto Sans JP",serif;line-height:1.45;letter-spacing:.01em}
+  .serif{font-family:"Noto Serif JP",serif}
+  a{color:var(--navy-2)}
+
+  /* ---- header ---- */
+  header.bar{background:var(--navy);color:#fff;padding:14px 0}
+  .bar .wrap{display:flex;align-items:center;gap:10px}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.04em}
+  .logo .dot{width:11px;height:11px;border-radius:50%;background:var(--gold);
+    box-shadow:0 0 0 4px rgba(184,146,79,.25);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(184,146,79,.30)}50%{box-shadow:0 0 0 7px rgba(184,146,79,.05)}}
+  .bar small{margin-left:auto;color:#c7d2de;font-size:12px;font-weight:400}
+
+  /* ---- hero ---- */
+  .hero{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;
+    padding:50px 0 64px;position:relative;overflow:hidden}
+  .hero:after{content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 80% -10%,rgba(184,146,79,.22),transparent 45%);pointer-events:none}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;letter-spacing:.12em;
+    color:var(--gold);border:1px solid rgba(184,146,79,.45);border-radius:999px;padding:5px 13px}
+  .hero h1{font-size:30px;margin:18px 0 14px;color:#fff}
+  .hero h1 .hl{color:var(--gold)}
+  .hero p{color:#d3dce6;margin:0 0 26px;font-size:15.5px}
+  .cta{display:inline-flex;align-items:center;gap:9px;background:var(--gold);color:#10243f;font-weight:700;
+    text-decoration:none;padding:15px 30px;border-radius:12px;font-size:16px;border:none;cursor:pointer;
+    box-shadow:0 10px 26px rgba(184,146,79,.35);transition:transform .15s,box-shadow .15s}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(184,146,79,.45)}
+  .trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:24px;font-size:12.5px;color:#aeb9c6}
+  .trust b{color:#e7edf3;font-weight:500}
+
+  /* ---- sections ---- */
+  section{padding:46px 0}
+  .kicker{color:var(--gold-dim);font-weight:700;font-size:13px;letter-spacing:.1em;margin:0 0 6px}
+  h2.title{font-size:23px;margin:0 0 22px}
+
+  /* ---- quiz ---- */
+  .quiz{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);
+    padding:26px 22px;margin-top:-30px;position:relative;z-index:2}
+  .progress{height:6px;background:#eee7da;border-radius:999px;overflow:hidden;margin-bottom:20px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-dim));
+    transition:width .4s}
+  .step{display:none}
+  .step.on{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .q-no{color:var(--gold-dim);font-weight:700;font-size:13px;letter-spacing:.08em}
+  .q-text{font-size:19px;font-weight:700;margin:4px 0 16px;font-family:"Noto Serif JP",serif}
+  .q-hint{font-size:13px;color:var(--ink-soft);margin:-10px 0 16px}
+  .opts{display:grid;gap:10px}
+  .opt{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line-2);border-radius:12px;
+    padding:14px 16px;cursor:pointer;background:#fff;transition:.15s;font-size:15.5px;font-weight:500}
+  .opt:hover{border-color:var(--gold);background:#fffdf8}
+  .opt.sel{border-color:var(--gold);background:#fbf4e6;box-shadow:inset 0 0 0 1px var(--gold)}
+  .opt .ic{width:26px;text-align:center;font-size:18px}
+  .opt .chk{margin-left:auto;width:22px;height:22px;border-radius:6px;border:2px solid var(--line-2);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;transition:.15s}
+  .opt.sel .chk{background:var(--gold);border-color:var(--gold)}
+  .nav{display:flex;gap:10px;margin-top:20px}
+  .btn{flex:1;padding:14px;border-radius:11px;border:none;font-weight:700;font-size:15.5px;cursor:pointer;
+    font-family:inherit}
+  .btn.prim{background:var(--navy);color:#fff}
+  .btn.prim:disabled{opacity:.4;cursor:not-allowed}
+  .btn.ghost{flex:0 0 auto;background:transparent;border:1.5px solid var(--line-2);color:var(--ink-soft);
+    padding:14px 18px}
+
+  /* ---- results ---- */
+  #result{display:none}
+  .disclaimer{background:#fff8e8;border:1px solid #ecd9a6;border-radius:12px;padding:13px 16px;
+    font-size:13px;color:#6b5320;margin-bottom:22px;line-height:1.7}
+  .disclaimer b{color:#5a4413}
+  .res-head .q-no{color:var(--gold-dim)}
+  .grp-label{font-size:13.5px;font-weight:700;color:var(--navy-2);margin:24px 0 10px;
+    display:flex;align-items:center;gap:8px}
+  .grp-label:before{content:"";width:18px;height:2px;background:var(--gold)}
+  .card{border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;margin-bottom:12px;
+    background:var(--card);box-shadow:0 4px 16px rgba(15,37,64,.05)}
+  .card .top{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:7px}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.04em}
+  .tag.meti{background:#e8f0f9;color:#1b3a5c}
+  .tag.mhlw{background:#eaf4ec;color:#1f7a4d}
+  .card h3{font-size:17px;margin:0;flex:1 1 auto;font-family:"Noto Serif JP",serif}
+  .card .renamed{font-size:11.5px;color:var(--ink-soft);font-weight:400;font-family:"Noto Sans JP"}
+  .card p{margin:6px 0 13px;font-size:14px;color:var(--ink-soft)}
+  .card .who{display:inline-block;font-size:12px;background:#f3f0e8;color:#5d5443;border-radius:6px;
+    padding:2px 9px;margin-bottom:11px}
+  .official{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-weight:700;font-size:13.5px;
+    color:var(--navy);border:1.5px solid var(--navy);border-radius:9px;padding:9px 15px;transition:.15s}
+  .official:hover{background:var(--navy);color:#fff}
+  .official .src{font-weight:400;font-size:11px;opacity:.7;margin-left:2px}
+
+  /* ---- 結果カウントバッジ ---- */
+  .count-badge{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);
+    border-left:4px solid var(--ok);border-radius:12px;padding:14px 16px;margin:4px 0 18px}
+  .count-badge .big{font-size:30px;font-weight:800;color:var(--ok);line-height:1;font-family:"Noto Sans JP"}
+  .count-badge .big small{font-size:15px;font-weight:700}
+  .count-badge .ct{font-size:14px;color:var(--ink);font-weight:500}
+
+  /* ---- email capture ---- */
+  .capture{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--navy),var(--navy-2));
+    color:#fff;border-radius:18px;padding:26px 22px;margin-top:22px;box-shadow:var(--shadow)}
+  .capture .radar{position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;
+    border:1.5px solid rgba(184,146,79,.35);display:flex;align-items:center;justify-content:center;pointer-events:none}
+  .capture .radar:before,.capture .radar:after{content:"";position:absolute;border-radius:50%;
+    border:1.5px solid rgba(184,146,79,.35)}
+  .capture .radar:before{width:90px;height:90px}
+  .capture .radar:after{width:46px;height:46px}
+  .capture .radar span{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--gold);
+    box-shadow:0 0 14px 3px rgba(184,146,79,.7);animation:ping 2.6s ease-out infinite}
+  @keyframes ping{0%{transform:scale(.4);opacity:1}70%{transform:scale(2.6);opacity:0}100%{opacity:0}}
+  .capture h3{color:#fff;font-size:21px;margin:0 0 8px;position:relative}
+  .capture h3 b{color:var(--gold)}
+  .capture .lead{color:#cdd8e4;font-size:14px;margin:0 0 16px;position:relative}
+  .capture form{display:grid;gap:10px;position:relative}
+  .capture input[type=email]{padding:16px;border-radius:11px;border:1.5px solid transparent;font-size:16px;
+    font-family:inherit;width:100%}
+  .capture input[type=email]:focus{outline:none;border-color:var(--gold)}
+  .submit{background:var(--gold);color:#10243f;border:none;border-radius:11px;padding:17px;font-weight:800;
+    font-size:16.5px;cursor:pointer;font-family:inherit;transition:transform .12s}
+  .submit:hover{transform:translateY(-1px)}
+  .submit:disabled{opacity:.5;cursor:not-allowed}
+  .agree{display:flex;gap:8px;align-items:flex-start;font-size:11.5px;color:#9fb0c1;line-height:1.6;position:relative}
+  .agree input{margin-top:2px}
+  .agree a{color:#e6d2a6}
+  .trustrow{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;font-size:12px;color:#bcd0c4;position:relative}
+  .trustrow span{white-space:nowrap}
+  .formmsg{font-size:13.5px;margin-top:6px;padding:12px 14px;border-radius:9px;display:none;position:relative}
+  .formmsg.ok{display:block;background:rgba(31,122,77,.22);color:#cdeed8;border:1px solid rgba(31,122,77,.55)}
+  .formmsg.warn{display:block;background:rgba(184,146,79,.18);color:#f0dcae;border:1px solid rgba(184,146,79,.5)}
+
+  .restart{display:block;text-align:center;margin:22px auto 0;background:none;border:none;color:var(--ink-soft);
+    text-decoration:underline;cursor:pointer;font-size:13px;font-family:inherit}
+
+  /* ---- value strip ---- */
+  .vstrip{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .vgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+  .vitem .vi{font-size:22px}
+  .vitem b{display:block;margin:6px 0 3px;font-size:14.5px}
+  .vitem span{font-size:12.5px;color:var(--ink-soft)}
+
+  /* ---- footer ---- */
+  footer{background:var(--navy);color:#aeb9c6;padding:34px 0 40px;font-size:12.5px;line-height:1.9}
+  footer h4{color:#fff;font-size:13px;margin:0 0 8px;font-family:"Noto Sans JP"}
+  footer a{color:#cdd8e4}
+  footer .src-list{margin:0;padding-left:18px}
+  footer .fnav{margin:8px 0 0;display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px}
+  footer .fnav a{color:#e6edf4;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:1px}
+  footer .fine{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);color:#8895a4}
+
+  @media(max-width:560px){
+    .hero h1{font-size:25px}.vgrid{grid-template-columns:1fr;gap:12px}
+    .vitem{display:flex;gap:12px;align-items:center}.vitem .vi{font-size:20px}.vitem b{margin:0}
+  }
+</style>
+<script src="ga.js"></script>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="logo"><span class="dot"></span>補助金レーダー</span>
+    <small>情報源：中小企業庁・厚生労働省（公式）</small>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">● 中小企業・個人事業の経営者へ</span>
+    <h1>自社が使える補助金、<br><span class="hl">取りこぼしていませんか？</span></h1>
+    <p>もらえるはずの国の補助金・助成金は、種類が多く・締切もバラバラで、毎年多くの会社が気づかないまま見送っています。<br>3つの質問に答えるだけ。あなたの会社が「今、使える可能性のある制度」がわかります。</p>
+    <button class="cta" onclick="document.getElementById('quizbox').scrollIntoView()">▶ 30秒で無料診断する</button>
+    <div class="trust">
+      <span><b>出典はすべて公式</b>（中小企業庁・厚労省）</span>
+      <span><b>無料</b>・登録不要で診断</span>
+      <span><b>勧誘の電話なし</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="quiz" id="quizbox">
+    <div class="progress"><i id="bar"></i></div>
+
+    <!-- Q1 -->
+    <div class="step on" data-step="0">
+      <div class="q-no">QUESTION 1 / 3</div>
+      <div class="q-text">あなたの会社の業種に近いものは？</div>
+      <div class="opts" data-single>
+        <div class="opt" data-v="build"><span class="ic">🏗️</span>建設・工事・職人系<span class="chk">✓</span></div>
+        <div class="opt" data-v="maker"><span class="ic">🏭</span>製造・ものづくり<span class="chk">✓</span></div>
+        <div class="opt" data-v="service"><span class="ic">🏪</span>小売・飲食・サービス<span class="chk">✓</span></div>
+        <div class="opt" data-v="other"><span class="ic">💼</span>IT・士業・その他<span class="chk">✓</span></div>
+      </div>
+      <div class="nav"><button class="btn prim" disabled onclick="next()">次へ</button></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="step" data-step="1">
+      <div class="q-no">QUESTION 2 / 3</div>
+      <div class="q-text">従業員はおよそ何名ですか？</div>
+      <div class="q-hint">※ 補助金は「小規模」かどうかで対象が変わるため伺います</div>
+      <div class="opts" data-single>
+        <div class="opt" data-v="s1"><span class="ic">①</span>5人以下（個人含む）<span class="chk">✓</span></div>
+        <div class="opt" data-v="s2"><span class="ic">②</span>6〜20人<span class="chk">✓</span></div>
+        <div class="opt" data-v="s3"><span class="ic">③</span>21〜50人<span class="chk">✓</span></div>
+        <div class="opt" data-v="s4"><span class="ic">④</span>51人以上<span class="chk">✓</span></div>
+      </div>
+      <div class="nav">
+        <button class="btn ghost" onclick="prev()">戻る</button>
+        <button class="btn prim" disabled onclick="next()">次へ</button>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="step" data-step="2">
+      <div class="q-no">QUESTION 3 / 3</div>
+      <div class="q-text">いま取り組みたいこと（複数選べます）</div>
+      <div class="opts" data-multi>
+        <div class="opt" data-v="labor"><span class="ic">🤖</span>人手不足を解消したい（自動化・省力化）<span class="chk">✓</span></div>
+        <div class="opt" data-v="invest"><span class="ic">⚙️</span>設備投資・新商品/サービスを作りたい<span class="chk">✓</span></div>
+        <div class="opt" data-v="it"><span class="ic">💻</span>ITツール・AIを導入したい<span class="chk">✓</span></div>
+        <div class="opt" data-v="sales"><span class="ic">📈</span>売上・販路を広げたい<span class="chk">✓</span></div>
+        <div class="opt" data-v="hire"><span class="ic">🧑‍💼</span>人を採用・正社員化したい<span class="chk">✓</span></div>
+        <div class="opt" data-v="train"><span class="ic">📚</span>従業員を育成・教育したい<span class="chk">✓</span></div>
+        <div class="opt" data-v="wage"><span class="ic">💴</span>賃上げをしたい<span class="chk">✓</span></div>
+        <div class="opt" data-v="succ"><span class="ic">🤝</span>事業承継・M&Aを考えている<span class="chk">✓</span></div>
+      </div>
+      <div class="nav">
+        <button class="btn ghost" onclick="prev()">戻る</button>
+        <button class="btn prim" disabled onclick="showResult()">結果を見る</button>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="result">
+      <div class="res-head">
+        <div class="q-no">診断結果</div>
+        <div class="q-text" id="res-title">あなたの会社が使える可能性のある制度</div>
+      </div>
+      <div class="disclaimer">
+        <b>ご確認ください：</b>本診断は、ご回答に近い「国の代表的な制度」をご案内する参考情報です。
+        実際の対象要件・補助上限・補助率・公募期間は年度や回次で変わります。
+        <b>申請の可否や最新の条件は、必ず各制度の公式ページでご確認ください。</b>当サイトは申請の代行・保証は行いません。
+      </div>
+      <div class="count-badge">
+        <div class="big" id="count-num">3<small>件</small></div>
+        <div class="ct">あなたに合いそうな制度が見つかりました。<br><b>でも、補助金は“締切”を逃すと申請できません。</b></div>
+      </div>
+
+      <div id="cards"></div>
+
+      <div class="capture">
+        <div class="radar"><span></span></div>
+        <h3>この<b id="cap-num">制度</b>、締切を逃さないよう<br><b>無料で“見張り”ます</b></h3>
+        <p class="lead">公募の開始・締切が近づいたら、メールでそっとお知らせ。あなたに関係するものだけ。登録はメールだけ・10秒です。</p>
+        <form id="leadform">
+          <input type="email" id="email" placeholder="メールアドレスを入力" required autocomplete="email" inputmode="email">
+          <button class="submit" type="submit">無料で締切通知を受け取る →</button>
+          <label class="agree">
+            <input type="checkbox" id="agree" required>
+            <span>配信に同意します（いつでも1クリックで解除・<a href="#privacy">取り扱い</a>）</span>
+          </label>
+        </form>
+        <div class="formmsg" id="formmsg"></div>
+        <div class="trustrow"><span>✓ 完全無料</span><span>✓ 勧誘の電話なし</span><span>✓ 1クリックで解除</span></div>
+      </div>
+
+      <button class="restart" onclick="restart()">↻ もう一度診断する</button>
+    </div>
+  </div>
+</div>
+
+<div class="vstrip">
+  <section>
+    <div class="wrap vgrid">
+      <div class="vitem"><div class="vi">📑</div><div><b>出典は公式だけ</b><span>中小企業庁・ミラサポplus・厚労省の一次情報にリンク。盛らない・断定しない。</span></div></div>
+      <div class="vitem"><div class="vi">⏰</div><div><b>締切を見張る</b><span>あなたに関係する制度の公募・締切だけを通知。情報の洪水にしない。</span></div></div>
+      <div class="vitem"><div class="vi">🙅</div><div><b>しつこい営業なし</b><span>電話勧誘や申請代行の押し売りはしません。判断はあなたの会社で。</span></div></div>
+    </div>
+  </section>
+</div>
+
+<section style="padding-top:8px">
+  <div class="wrap">
+    <p class="kicker">READ MORE</p>
+    <h2 class="title">補助金を「取りこぼさない」ための読みもの</h2>
+    <div style="display:grid;gap:11px">
+      <a href="articles/hojokin-joseikin-chigai.html" style="display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 18px;text-decoration:none;color:var(--ink);font-weight:600">補助金と助成金の違いは？代表的な制度を整理 →</a>
+      <a href="articles/jinsbusoku-hojokin.html" style="display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 18px;text-decoration:none;color:var(--ink);font-weight:600">人手不足を「補助金」で解決する発想 →</a>
+      <a href="articles/torikoboshi-naze.html" style="display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 18px;text-decoration:none;color:var(--ink);font-weight:600">補助金の“取りこぼし”はなぜ起きる？防ぎ方 →</a>
+      <a href="articles/" style="text-align:center;color:var(--gold-dim);font-weight:700;text-decoration:none;padding:6px">記事一覧をすべて見る</a>
+    </div>
+  </div>
+</section>
+
+<footer id="privacy">
+  <div class="wrap">
+    <h4>情報源（出典）</h4>
+    <ul class="src-list">
+      <li><a href="https://mirasapo-plus.go.jp/subsidy/" target="_blank" rel="noopener">中小企業庁 ミラサポplus（補助金・助成金）</a></li>
+      <li><a href="https://www.chusho.meti.go.jp/koukai/hojyokin/kobo.html" target="_blank" rel="noopener">中小企業庁 補助金公募情報</a></li>
+      <li><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/index.html" target="_blank" rel="noopener">厚生労働省 雇用関係助成金</a></li>
+    </ul>
+    <h4 style="margin-top:18px">メディアについて</h4>
+    <div class="fnav">
+      <a href="about.html">このサイトについて（編集方針）</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="disclaimer.html">免責事項</a>
+      <a href="articles/">記事一覧</a>
+    </div>
+    <div class="fine">
+       © 補助金レーダー ｜ 本サイトは公的機関ではなく、公式情報をわかりやすく案内する民間の情報メディアです。
+      掲載内容は作成時点のもので、制度の最新状況・正確な要件は必ず各公式ページでご確認ください。申請の代行・採択の保証は行いません。お預かりするメールは情報配信のみに使用し、第三者提供しません。
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   設定：メール連携（MailerLite）
+   ▼ ここに MailerLite の登録フォームの「action URL」を入れると
+     入力されたメールが MailerLite の "補助金" グループに自動登録されます。
+   ▼ 空のままでも診断は完全に動作します（メール送信のみ準備中表示）。
+   取得手順は同フォルダ SETUP.md を参照。
+   ============================================================ */
+const MAILERLITE_ACTION = "https://assets.mailerlite.com/jsonp/2447920/forms/191145135545779260/subscribe"; // 補助金レーダー登録(group:補助金) 2026-06-24 実通信検証済
+const MAILERLITE_EMAIL_FIELD = "fields[email]";
+
+/* ---- 制度マスタ（出典：公式。リンクは公式カテゴリページ・締切で陳腐化しない） ---- */
+const SUBSIDIES = {
+  shoryokuka:{org:"meti", name:"中小企業省力化投資補助金",
+    who:"人手不足の中小企業・小規模事業者", use:"ロボット・IoT・AI等の導入で省力化・自動化",
+    url:"https://mirasapo-plus.go.jp/subsidy/shoryokuka/", src:"ミラサポplus"},
+  ithojo:{org:"meti", name:"デジタル化・AI導入補助金", renamed:"（旧：IT導入補助金）",
+    who:"ITで効率化したい中小企業・小規模事業者", use:"会計・予約・在庫などのITツールやAIの導入費用",
+    url:"https://mirasapo-plus.go.jp/subsidy/ithojo/", src:"ミラサポplus"},
+  monozukuri:{org:"meti", name:"ものづくり補助金",
+    who:"設備投資で生産性を上げたい事業者", use:"新製品・新サービス開発、革新的な設備・機械の導入",
+    url:"https://mirasapo-plus.go.jp/subsidy/manufacturing/", src:"ミラサポplus"},
+  jizokuka:{org:"meti", name:"小規模事業者持続化補助金",
+    who:"小規模事業者（商業・サービス5人以下／製造・建設等20人以下が目安）", use:"販路開拓・広告・店舗改装などの販促費用",
+    url:"https://mirasapo-plus.go.jp/subsidy/jizokuka/", src:"ミラサポplus"},
+  shinjigyou:{org:"meti", name:"新事業進出補助金",
+    who:"既存と異なる新市場・新事業に挑む中小企業", use:"新分野進出のための設備投資・建物費など",
+    url:"https://mirasapo-plus.go.jp/subsidy/shinjigyou/", src:"ミラサポplus"},
+  syokei:{org:"meti", name:"事業承継・M&A補助金",
+    who:"後継者への引継ぎ・M&Aを考える事業者", use:"承継・M&Aに伴う設備投資、専門家費用、PMI支援",
+    url:"https://mirasapo-plus.go.jp/subsidy/syokei/", src:"ミラサポplus"},
+  seityo:{org:"meti", name:"中小企業成長加速化補助金",
+    who:"売上100億円を目指す成長志向の中小企業", use:"飛躍的成長を目指す大型の設備投資",
+    url:"https://mirasapo-plus.go.jp/subsidy/seityo/", src:"ミラサポplus"},
+  careerup:{org:"mhlw", name:"キャリアアップ助成金",
+    who:"非正規雇用の方を雇う事業主", use:"パート・契約社員などの正社員化・処遇改善",
+    url:"https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000118801.html", src:"厚生労働省"},
+  jinzai:{org:"mhlw", name:"人材開発支援助成金",
+    who:"従業員を育成・教育したい事業主", use:"職業訓練・研修の経費や訓練中の賃金の一部",
+    url:"https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/d01-1.html", src:"厚生労働省"},
+  gyomukaizen:{org:"mhlw", name:"業務改善助成金",
+    who:"賃上げに取り組む中小企業・小規模事業者", use:"事業場内最低賃金の引上げ＋生産性向上のための設備投資",
+    url:"https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/zigyonushi/shienjigyou/03.html", src:"厚生労働省"}
+};
+
+const state = {0:null, 1:null, 2:[]};
+let cur = 0;
+
+document.querySelectorAll('.opts').forEach(box=>{
+  const multi = box.hasAttribute('data-multi');
+  const stepEl = box.closest('.step');
+  const step = +stepEl.dataset.step;
+  box.querySelectorAll('.opt').forEach(opt=>{
+    opt.addEventListener('click',()=>{
+      if(multi){
+        opt.classList.toggle('sel');
+        state[step] = [...box.querySelectorAll('.opt.sel')].map(o=>o.dataset.v);
+      }else{
+        box.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+        opt.classList.add('sel');
+        state[step] = opt.dataset.v;
+      }
+      const filled = multi ? state[step].length>0 : !!state[step];
+      stepEl.querySelector('.btn.prim').disabled = !filled;
+    });
+  });
+});
+
+function setBar(){ document.getElementById('bar').style.width = ((cur)/3*100)+'%'; }
+function go(n){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('on'));
+  document.getElementById('result').style.display='none';
+  document.querySelector('.step[data-step="'+n+'"]').classList.add('on');
+  cur=n; setBar();
+  document.getElementById('quizbox').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function next(){ if(cur<2) go(cur+1); }
+function prev(){ if(cur>0) go(cur-1); }
+function restart(){ state[0]=null;state[1]=null;state[2]=[];
+  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+  document.querySelectorAll('.btn.prim').forEach(b=>b.disabled=true); go(0); }
+
+function isSmall(ind,size){
+  // 持続化補助金の小規模目安：商業・サービスは5人以下、製造・建設等は20人以下
+  if(ind==='service'||ind==='other') return size==='s1';
+  return size==='s1'||size==='s2';
+}
+
+function match(){
+  const ind=state[0], size=state[1], want=state[2];
+  const primary=[], related=[];
+  const add=(arr,k)=>{ if(!arr.includes(k)) arr.push(k); };
+
+  if(want.includes('labor')){ add(primary,'shoryokuka'); add(related,'ithojo'); }
+  if(want.includes('it')){ add(primary,'ithojo'); }
+  if(want.includes('invest')){ add(primary,'monozukuri'); }
+  if(want.includes('sales')){
+    if(isSmall(ind,size)) add(primary,'jizokuka');
+    else { add(primary,'monozukuri'); add(related,'shinjigyou'); }
+  }
+  if(want.includes('hire')) add(primary,'careerup');
+  if(want.includes('train')) add(primary,'jinzai');
+  if(want.includes('wage')){ add(primary,'gyomukaizen'); add(related,'shoryokuka'); }
+  if(want.includes('succ')) add(primary,'syokei');
+
+  // 補助的な提案
+  if(size==='s4' && (want.includes('invest')||want.includes('sales'))) add(related,'seityo');
+  if(isSmall(ind,size) && !primary.includes('jizokuka') && want.length) add(related,'jizokuka');
+
+  // 何も選ばれない時のフォールバック（広く効く2つ）
+  if(primary.length===0){ add(primary,'shoryokuka'); add(primary,'ithojo'); }
+
+  const rel = related.filter(k=>!primary.includes(k));
+  return {primary, related:rel};
+}
+
+function cardHTML(key){
+  const s=SUBSIDIES[key];
+  const tag = s.org==='mhlw' ? '<span class="tag mhlw">厚労省</span>' : '<span class="tag meti">国（経産省）</span>';
+  const renamed = s.renamed ? '<span class="renamed">'+s.renamed+'</span>' : '';
+  return `<div class="card">
+    <div class="top">${tag}<h3>${s.name} ${renamed}</h3></div>
+    <span class="who">向いている人：${s.who}</span>
+    <p>${s.use}</p>
+    <a class="official" href="${s.url}" target="_blank" rel="noopener">公式ページで詳しく見る ↗ <span class="src">出典:${s.src}</span></a>
+  </div>`;
+}
+
+function showResult(){
+  const {primary, related} = match();
+  let html = '<div class="grp-label">あなたの関心に直接ひもづく制度</div>';
+  html += primary.map(cardHTML).join('');
+  if(related.length){
+    html += '<div class="grp-label">あわせて検討したい制度</div>';
+    html += related.map(cardHTML).join('');
+  }
+  document.getElementById('cards').innerHTML = html;
+  const total = primary.length + related.length;
+  document.getElementById('count-num').innerHTML = total + '<small>件</small>';
+  document.getElementById('cap-num').textContent = total>1 ? total+'件の制度' : '制度';
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('on'));
+  document.getElementById('result').style.display='block';
+  document.getElementById('bar').style.width='100%';
+  if(window.srTrack) srTrack('diagnose_complete', {count: total, industry: state[0], size: state[1]});
+  document.getElementById('quizbox').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ---- メール登録 ---- */
+document.getElementById('leadform').addEventListener('submit', function(e){
+  e.preventDefault();
+  const email=document.getElementById('email').value.trim();
+  const msg=document.getElementById('formmsg');
+  if(window.srTrack) srTrack('lead_submit');
+  if(!MAILERLITE_ACTION){
+    msg.className='formmsg warn';
+    msg.textContent='✓ ありがとうございます。メール配信はまもなく開始します（準備中）。診断結果は上のとおりです。';
+    return;
+  }
+  const fd=new FormData();
+  fd.append(MAILERLITE_EMAIL_FIELD, email);
+  fetch(MAILERLITE_ACTION,{method:'POST',body:fd,mode:'no-cors'})
+    .then(()=>{ msg.className='formmsg ok';
+      msg.textContent='✓ 確認メールをお送りしました。メール内のボタンを押すと登録完了です（届かない場合は迷惑メールもご確認ください）。'; })
+    .catch(()=>{ msg.className='formmsg warn';
+      msg.textContent='送信に失敗しました。時間をおいて再度お試しください。'; });
+});
+
+setBar();
+</script>
+</body>
+</html>
