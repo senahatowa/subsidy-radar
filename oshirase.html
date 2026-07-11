@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>補助金の公募・締切カレンダー｜今申請できる制度がわかる｜補助金レーダー</title>
+<meta name="description" content="中小企業・個人事業の経営者向け。いま受付中の国の補助金・助成金と、次の公募開始・締切日を一覧でお知らせ。省力化投資補助金・デジタル化AI導入補助金・持続化補助金など。出典はすべて公式。">
+<meta property="og:title" content="補助金の公募・締切カレンダー｜補助金レーダー">
+<meta property="og:description" content="いま受付中の補助金と次の締切を一覧で。締切が近づいたらメールでもお知らせ（無料）。">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://senahatowa.github.io/subsidy-radar/oshirase.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16202c; --ink-soft:#46535f; --paper:#f6f4ef; --card:#ffffff;
+    --navy:#0f2540; --navy-2:#1b3a5c; --gold:#b8924f; --gold-dim:#8a6d39;
+    --line:#e6e1d6; --line-2:#d9d2c4; --ok:#1f7a4d; --alert:#b0392e;
+    --shadow:0 12px 40px rgba(15,37,64,.10);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Sans JP",system-ui,-apple-system,sans-serif;color:var(--ink);
+    background:var(--paper);line-height:1.8;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:"Noto Serif JP","Noto Sans JP",serif;line-height:1.45;letter-spacing:.01em}
+  a{color:var(--navy-2)}
+
+  header.bar{background:var(--navy);color:#fff;padding:14px 0}
+  .bar .wrap{display:flex;align-items:center;gap:10px}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.04em;color:#fff;text-decoration:none}
+  .logo .dot{width:11px;height:11px;border-radius:50%;background:var(--gold);
+    box-shadow:0 0 0 4px rgba(184,146,79,.25);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(184,146,79,.30)}50%{box-shadow:0 0 0 7px rgba(184,146,79,.05)}}
+  @media(prefers-reduced-motion:reduce){.logo .dot{animation:none}}
+  .bar small{margin-left:auto;color:#c7d2de;font-size:12px;font-weight:400}
+
+  .hd{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff;padding:36px 0 44px}
+  .hd .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;letter-spacing:.12em;
+    color:var(--gold);border:1px solid rgba(184,146,79,.45);border-radius:999px;padding:5px 13px}
+  .hd h1{color:#fff;font-size:27px;margin:14px 0 10px}
+  .hd p{color:#cdd8e4;font-size:14.5px;margin:0}
+  .checked{display:inline-block;margin-top:14px;font-size:12px;color:#aeb9c6;background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:4px 11px}
+
+  /* 次の締切バナー */
+  .next-strip{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);
+    border-radius:14px;box-shadow:var(--shadow);padding:16px 18px;margin-top:-26px;position:relative;z-index:2;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+  .next-strip .lbl{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--gold-dim)}
+  .next-strip .what{font-weight:700;font-size:15.5px}
+  .next-strip .days{font-size:13px;color:var(--alert);font-weight:700;white-space:nowrap}
+
+  section{padding:34px 0 6px}
+  .kicker{color:var(--gold-dim);font-weight:700;font-size:13px;letter-spacing:.1em;margin:0 0 4px}
+  h2.title{font-size:21px;margin:0 0 16px}
+
+  /* 予定カード */
+  .ev{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;margin-bottom:12px;box-shadow:0 4px 16px rgba(15,37,64,.05)}
+  .ev .date{flex:0 0 76px;text-align:center;border-right:1px solid var(--line);padding-right:14px;
+    font-variant-numeric:tabular-nums}
+  .ev .date .m{display:block;font-size:11.5px;font-weight:700;color:var(--gold-dim);letter-spacing:.08em}
+  .ev .date .d{display:block;font-size:27px;font-weight:800;line-height:1.25;color:var(--navy)}
+  .ev .date .until{display:block;font-size:10.5px;color:var(--ink-soft)}
+  .ev .date.nodate .d{font-size:17px;padding:8px 0}
+  .ev .body{flex:1;min-width:0}
+  .ev .top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.04em}
+  .tag.meti{background:#e8f0f9;color:#1b3a5c}
+  .tag.mhlw{background:#eaf4ec;color:#1f7a4d}
+  .st{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;letter-spacing:.04em;white-space:nowrap}
+  .st.open{background:#eaf4ec;color:var(--ok)}
+  .st.soon{background:#f9e9e7;color:var(--alert)}
+  .st.wait{background:#e8f0f9;color:var(--navy-2)}
+  .st.always{background:#f3ecdd;color:var(--gold-dim)}
+  .st.tba{background:#efece5;color:var(--ink-soft)}
+  .ev h3{font-size:16px;margin:0 0 3px}
+  .ev h3 .round{font-size:12.5px;color:var(--ink-soft);font-weight:500;font-family:"Noto Sans JP"}
+  .ev .desc{font-size:13px;color:var(--ink-soft);margin:0 0 10px}
+  .ev .desc b{color:var(--ink)}
+  .official{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:12.5px;
+    color:var(--navy);border:1.5px solid var(--navy);border-radius:8px;padding:7px 12px;transition:.15s}
+  .official:hover{background:var(--navy);color:#fff}
+  .official .src{font-weight:400;font-size:10.5px;opacity:.7}
+  @media(max-width:480px){
+    .ev{flex-direction:column;gap:10px}
+    .ev .date{flex:none;display:flex;align-items:baseline;gap:8px;text-align:left;border-right:none;
+      border-bottom:1px dashed var(--line);padding:0 0 8px}
+    .ev .date .d{font-size:21px}
+  }
+
+  .disclaimer{background:#fff8e8;border:1px solid #ecd9a6;border-radius:12px;padding:13px 16px;
+    font-size:13px;color:#6b5320;margin:22px 0 0;line-height:1.7}
+  .disclaimer b{color:#5a4413}
+
+  /* email capture（トップと共通の見た目） */
+  .capture{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--navy),var(--navy-2));
+    color:#fff;border-radius:18px;padding:26px 22px;margin:34px 0 8px;box-shadow:var(--shadow)}
+  .capture .radar{position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;
+    border:1.5px solid rgba(184,146,79,.35);display:flex;align-items:center;justify-content:center;pointer-events:none}
+  .capture .radar:before,.capture .radar:after{content:"";position:absolute;border-radius:50%;
+    border:1.5px solid rgba(184,146,79,.35)}
+  .capture .radar:before{width:90px;height:90px}
+  .capture .radar:after{width:46px;height:46px}
+  .capture .radar span{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--gold);
+    box-shadow:0 0 14px 3px rgba(184,146,79,.7);animation:ping 2.6s ease-out infinite}
+  @keyframes ping{0%{transform:scale(.4);opacity:1}70%{transform:scale(2.6);opacity:0}100%{opacity:0}}
+  @media(prefers-reduced-motion:reduce){.capture .radar span{animation:none}}
+  .capture h3{color:#fff;font-size:20px;margin:0 0 8px;position:relative}
+  .capture h3 b{color:var(--gold)}
+  .capture .lead{color:#cdd8e4;font-size:14px;margin:0 0 16px;position:relative}
+  .capture form{display:grid;gap:10px;position:relative}
+  .capture input[type=email]{padding:16px;border-radius:11px;border:1.5px solid transparent;font-size:16px;
+    font-family:inherit;width:100%}
+  .capture input[type=email]:focus{outline:none;border-color:var(--gold)}
+  .submit{background:var(--gold);color:#10243f;border:none;border-radius:11px;padding:17px;font-weight:800;
+    font-size:16.5px;cursor:pointer;font-family:inherit;transition:transform .12s}
+  .submit:hover{transform:translateY(-1px)}
+  .agree{display:flex;gap:8px;align-items:flex-start;font-size:11.5px;color:#9fb0c1;line-height:1.6;position:relative}
+  .agree input{margin-top:2px}
+  .agree a{color:#e6d2a6}
+  .trustrow{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;font-size:12px;color:#bcd0c4;position:relative}
+  .formmsg{font-size:13.5px;margin-top:6px;padding:12px 14px;border-radius:9px;display:none;position:relative}
+  .formmsg.ok{display:block;background:rgba(31,122,77,.22);color:#cdeed8;border:1px solid rgba(31,122,77,.55)}
+  .formmsg.warn{display:block;background:rgba(184,146,79,.18);color:#f0dcae;border:1px solid rgba(184,146,79,.5)}
+
+  .backlink{display:block;text-align:center;margin:26px 0 0;color:var(--gold-dim);font-weight:700;text-decoration:none}
+
+  footer{background:var(--navy);color:#aeb9c6;padding:34px 0 40px;font-size:12.5px;line-height:1.9;margin-top:44px}
+  footer h4{color:#fff;font-size:13px;margin:0 0 8px;font-family:"Noto Sans JP"}
+  footer a{color:#cdd8e4}
+  footer .src-list{margin:0;padding-left:18px}
+  footer .fnav{margin:8px 0 0;display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px}
+  footer .fnav a{color:#e6edf4;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:1px}
+  footer .fine{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);color:#8895a4}
+</style>
+<script src="ga.js"></script>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="./"><span class="dot"></span>補助金レーダー</a>
+    <small>情報源：中小企業庁・厚生労働省（公式）</small>
+  </div>
+</header>
+
+<div class="hd">
+  <div class="wrap">
+    <span class="eyebrow">● 公募・締切のお知らせ</span>
+    <h1>補助金の公募・締切カレンダー</h1>
+    <p>いま受付中の国の制度と、これから始まる公募をまとめています。<br>補助金は「気づいたら締切が過ぎていた」が一番もったいない。ここを見れば追えます。</p>
+    <span class="checked">📅 掲載情報の最終確認日：<b id="checked-date">2026年7月11日</b>（各公式サイトにて確認）</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="next-strip" id="next-strip" hidden>
+    <span class="lbl">⏰ 次の締切</span>
+    <span class="what" id="next-what"></span>
+    <span class="days" id="next-days"></span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">NOW OPEN</p>
+    <h2 class="title">いま受付中の制度</h2>
+    <div id="list-open"></div>
+
+    <p class="kicker" style="margin-top:30px">COMING UP</p>
+    <h2 class="title">これから受付が始まる制度</h2>
+    <div id="list-upcoming"></div>
+
+    <p class="kicker" style="margin-top:30px">ANYTIME</p>
+    <h2 class="title">通年で申請できる制度</h2>
+    <div id="list-always"></div>
+
+    <p class="kicker" style="margin-top:30px">WAITING</p>
+    <h2 class="title">次回公募の発表待ち</h2>
+    <div id="list-tba"></div>
+
+    <div class="disclaimer">
+      <b>ご確認ください：</b>日程はすべて掲載時点で各公式サイトにて確認したものですが、公募は延長・変更されることがあります。
+      また対象要件・補助率は回次ごとに変わります。<b>申請前に必ず公式ページで最新の公募要領をご確認ください。</b>当サイトは申請の代行・保証は行いません。
+    </div>
+
+    <div class="capture">
+      <div class="radar"><span></span></div>
+      <h3>この締切、<b>無料で“見張り”ます</b></h3>
+      <p class="lead">公募の開始・締切が近づいたら、メールでそっとお知らせ。あなたに関係するものだけ。登録はメールだけ・10秒です。</p>
+      <form id="leadform">
+        <input type="email" id="email" placeholder="メールアドレスを入力" required autocomplete="email" inputmode="email">
+        <button class="submit" type="submit">無料で締切通知を受け取る →</button>
+        <label class="agree">
+          <input type="checkbox" id="agree" required>
+          <span>配信に同意します（いつでも1クリックで解除・<a href="privacy.html">取り扱い</a>）</span>
+        </label>
+      </form>
+      <div class="formmsg" id="formmsg"></div>
+      <div class="trustrow"><span>✓ 完全無料</span><span>✓ 勧誘の電話なし</span><span>✓ 1クリックで解除</span></div>
+    </div>
+
+    <a class="backlink" href="./">▶ 自社が使える制度がわからない方は、まず30秒診断へ</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h4>情報源（出典）</h4>
+    <ul class="src-list">
+      <li><a href="https://mirasapo-plus.go.jp/subsidy/" target="_blank" rel="noopener">中小企業庁 ミラサポplus（補助金・助成金）</a></li>
+      <li><a href="https://www.chusho.meti.go.jp/koukai/hojyokin/kobo.html" target="_blank" rel="noopener">中小企業庁 補助金公募情報</a></li>
+      <li><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/index.html" target="_blank" rel="noopener">厚生労働省 雇用関係助成金</a></li>
+    </ul>
+    <h4 style="margin-top:18px">メディアについて</h4>
+    <div class="fnav">
+      <a href="about.html">このサイトについて（編集方針）</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="disclaimer.html">免責事項</a>
+      <a href="articles/">記事一覧</a>
+    </div>
+    <div class="fine">
+      © 補助金レーダー ｜ 本サイトは公的機関ではなく、公式情報をわかりやすく案内する民間の情報メディアです。
+      掲載内容は作成時点のもので、制度の最新状況・正確な要件は必ず各公式ページでご確認ください。申請の代行・採択の保証は行いません。お預かりするメールは情報配信のみに使用し、第三者提供しません。
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   公募スケジュール（ここを更新するだけでページ全体が更新されます）
+   type:
+     "window" … start〜end の受付期間あり（残り日数を自動計算）
+     "always" … 通年・随時受付
+     "tba"    … 次回公募が未発表
+   日付は "YYYY-MM-DD"。end の当日 17:00 締切などの注意は note に書く。
+   ============================================================ */
+const SCHEDULE = [
+  {type:"window", org:"meti", name:"中小企業省力化投資補助金（一般型）", round:"第7回公募",
+   start:"2026-07-01", end:"2026-07-31",
+   note:"ロボット・AI等の導入による省力化・自動化に。<b>締切は7/31（金）17:00</b>。採択発表は11月中旬予定。カタログから選ぶ「カタログ注文型」は通年で随時受付。",
+   url:"https://shoryokuka.smrj.go.jp/", src:"中小機構（公式）",
+   article:"articles/shoryokuka-hojokin.html"},
+
+  {type:"window", org:"meti", name:"デジタル化・AI導入補助金 2026", round:"3次締切分（旧：IT導入補助金）",
+   start:"2026-03-30", end:"2026-07-21",
+   note:"会計・予約・在庫などのITツールやAI導入の費用に。<b>3次締切は7/21（火）17:00</b>。間に合わなくても4次締切（8/25）以降、おおむね1〜2か月ごとに締切があります。",
+   url:"https://it-shien.smrj.go.jp/", src:"中小機構（公式）",
+   article:"articles/digital-ai-hojokin.html"},
+
+  {type:"window", org:"mhlw", name:"業務改善助成金", round:"令和8年度",
+   start:"2026-09-01", end:"2026-11-30",
+   note:"賃上げ＋設備投資をセットで支援。<b>今年度は受付期間が約3か月と短め</b>（9/1〜、都道府県の最低賃金発効日の前日または11/30の早い方まで）。8月中に見積り・機器選定を済ませておくのがおすすめ。",
+   url:"https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/zigyonushi/shienjigyou/03.html", src:"厚生労働省",
+   article:"articles/gyomukaizen-joseikin.html"},
+
+  {type:"window", org:"meti", name:"小規模事業者持続化補助金（一般型・通常枠）", round:"第20回公募",
+   start:"2026-11-05", end:"2026-12-15",
+   note:"販路開拓・広告・店舗改装などの販促費用に。受付は11/5〜12/15（火）17:00。<b>様式4（事業支援計画書）の発行依頼は12/4まで</b>なので、商工会・商工会議所への相談はお早めに。",
+   url:"https://official.jizokukanb.com/", src:"補助金事務局（公式）",
+   article:"articles/jizokuka-hojokin.html"},
+
+  {type:"always", org:"mhlw", name:"キャリアアップ助成金", round:"",
+   note:"パート・契約社員などの正社員化・処遇改善に。公募制ではなく<b>通年で申請可能</b>（正社員化後、6か月分の賃金を支払った翌日から2か月以内に支給申請）。",
+   url:"https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000118801.html", src:"厚生労働省",
+   article:"articles/careerup-joseikin.html"},
+
+  {type:"always", org:"mhlw", name:"人材開発支援助成金", round:"",
+   note:"研修・訓練の経費と訓練中の賃金の一部を支援。<b>通年で申請可能</b>ですが、訓練開始前に計画届の提出が必要なので、研修日程が決まったら早めに準備を。",
+   url:"https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/d01-1.html", src:"厚生労働省",
+   article:"articles/jinzai-kaihatsu-joseikin.html"},
+
+  {type:"tba", org:"meti", name:"ものづくり補助金", round:"第24次公募（未発表）",
+   note:"第23次は2026年5月8日に締切済み。第24次のスケジュールは未発表です（これまでは年3〜4回ペース）。発表され次第ここに掲載します。",
+   url:"https://portal.monodukuri-hojo.jp/", src:"公式サイト",
+   article:"articles/monozukuri-hojokin.html"},
+
+  {type:"tba", org:"meti", name:"新事業進出補助金", round:"第4回公募（未発表）",
+   note:"第3回は2026年3月26日に締切済み（採択発表は7月頃予定）。第4回のスケジュールは未発表です。",
+   url:"https://shinjigyou-shinshutsu.smrj.go.jp/", src:"中小機構（公式）",
+   article:"articles/shinjigyou-hojokin.html"},
+
+  {type:"tba", org:"meti", name:"事業承継・M&A補助金", round:"次回公募",
+   note:"第14次は2026年4月3日に締切済み。次回公募（第15次）の情報は公式サイトで順次公開されています。",
+   url:"https://shoukei-mahojokin.go.jp/", src:"補助金事務局（公式）",
+   article:"articles/shokei-ma-hojokin.html"}
+];
+
+/* ---- 描画 ---- */
+const SOON_DAYS = 14; // 残りこれ以下で「締切間近」
+const today = new Date(); today.setHours(0,0,0,0);
+const day = 24*60*60*1000;
+const parse = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y, m-1, d); };
+const fmtM = dt => (dt.getMonth()+1) + "月";
+const fmtD = dt => String(dt.getDate());
+const youbi = dt => "日月火水木金土"[dt.getDay()];
+
+function status(ev){
+  if(ev.type === "always") return "always";
+  if(ev.type === "tba") return "tba";
+  const s = parse(ev.start), e = parse(ev.end);
+  if(today < s) return "upcoming";
+  if(today > e) return "closed";
+  return (e - today)/day <= SOON_DAYS ? "soon" : "open";
+}
+
+function dateCol(ev, st){
+  if(st === "always") return '<div class="date nodate"><span class="m">受付</span><span class="d">通年</span></div>';
+  if(st === "tba")    return '<div class="date nodate"><span class="m">日程</span><span class="d">未定</span></div>';
+  const e = parse(ev.end), s = parse(ev.start);
+  if(st === "upcoming"){
+    return `<div class="date"><span class="m">${fmtM(s)}</span><span class="d">${fmtD(s)}</span><span class="until">${youbi(s)}曜 受付開始</span></div>`;
+  }
+  return `<div class="date"><span class="m">${fmtM(e)}</span><span class="d">${fmtD(e)}</span><span class="until">${youbi(e)}曜 締切</span></div>`;
+}
+
+function stChip(ev, st){
+  const e = ev.end ? parse(ev.end) : null, s = ev.start ? parse(ev.start) : null;
+  switch(st){
+    case "soon":     return `<span class="st soon">⏰ 締切間近・あと${Math.round((e-today)/day)}日</span>`;
+    case "open":     return `<span class="st open">受付中・締切まで${Math.round((e-today)/day)}日</span>`;
+    case "upcoming": return `<span class="st wait">受付開始まで${Math.round((s-today)/day)}日</span>`;
+    case "always":   return '<span class="st always">通年受付</span>';
+    default:         return '<span class="st tba">次回公募 発表待ち</span>';
+  }
+}
+
+function card(ev, st){
+  const tag = ev.org === "mhlw" ? '<span class="tag mhlw">厚労省</span>' : '<span class="tag meti">国（経産省）</span>';
+  const round = ev.round ? ` <span class="round">${ev.round}</span>` : "";
+  const article = ev.article ? ` <a class="official" style="border-color:var(--line-2);color:var(--ink-soft)" href="${ev.article}">解説記事を読む</a>` : "";
+  return `<div class="ev">
+    ${dateCol(ev, st)}
+    <div class="body">
+      <div class="top">${tag}${stChip(ev, st)}</div>
+      <h3>${ev.name}${round}</h3>
+      <p class="desc">${ev.note}</p>
+      <a class="official" href="${ev.url}" target="_blank" rel="noopener">公式ページで確認 ↗ <span class="src">出典:${ev.src}</span></a>${article}
+    </div>
+  </div>`;
+}
+
+const groups = {open:[], upcoming:[], always:[], tba:[]};
+SCHEDULE.forEach(ev => {
+  const st = status(ev);
+  if(st === "closed") return;                 // 締切済みは自動で非表示
+  if(st === "soon" || st === "open") groups.open.push([ev, st]);
+  else groups[st].push([ev, st]);
+});
+groups.open.sort((a,b) => parse(a[0].end) - parse(b[0].end));
+groups.upcoming.sort((a,b) => parse(a[0].start) - parse(b[0].start));
+
+const empty = msg => `<div class="ev"><div class="body"><p class="desc" style="margin:0">${msg}</p></div></div>`;
+document.getElementById("list-open").innerHTML =
+  groups.open.length ? groups.open.map(x=>card(...x)).join("") : empty("現在受付中の制度はありません。下の「通年で申請できる制度」もご覧ください。");
+document.getElementById("list-upcoming").innerHTML =
+  groups.upcoming.length ? groups.upcoming.map(x=>card(...x)).join("") : empty("直近で受付開始が確定している公募はありません。");
+document.getElementById("list-always").innerHTML = groups.always.map(x=>card(...x)).join("");
+document.getElementById("list-tba").innerHTML = groups.tba.map(x=>card(...x)).join("");
+
+/* 次の締切バナー */
+if(groups.open.length){
+  const [ev] = groups.open[0];
+  const e = parse(ev.end);
+  document.getElementById("next-what").textContent = `${fmtM(e)}${fmtD(e)}日（${youbi(e)}） ${ev.name}`;
+  document.getElementById("next-days").textContent = `あと${Math.round((e-today)/day)}日`;
+  document.getElementById("next-strip").hidden = false;
+}
+
+/* ---- メール登録（トップページと同じ MailerLite グループ） ---- */
+const MAILERLITE_ACTION = "https://assets.mailerlite.com/jsonp/2447920/forms/191145135545779260/subscribe";
+const MAILERLITE_EMAIL_FIELD = "fields[email]";
+document.getElementById("leadform").addEventListener("submit", function(e){
+  e.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  const msg = document.getElementById("formmsg");
+  if(window.srTrack) srTrack("lead_submit", {from:"oshirase"});
+  const fd = new FormData();
+  fd.append(MAILERLITE_EMAIL_FIELD, email);
+  fetch(MAILERLITE_ACTION, {method:"POST", body:fd, mode:"no-cors"})
+    .then(()=>{ msg.className="formmsg ok";
+      msg.textContent="✓ 確認メールをお送りしました。メール内のボタンを押すと登録完了です（届かない場合は迷惑メールもご確認ください）。"; })
+    .catch(()=>{ msg.className="formmsg warn";
+      msg.textContent="送信に失敗しました。時間をおいて再度お試しください。"; });
+});
+</script>
+</body>
+</html>
