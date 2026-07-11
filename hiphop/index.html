@@ -1,0 +1,584 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HIPHOP RADAR — ヒップホップ・カルチャーマガジン</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --asphalt: #0f0d0a;
+    --concrete: #1b1815;
+    --concrete-2: #26221d;
+    --chalk: #f1ead8;
+    --chalk-dim: #b7ae99;
+    --gold: #d9a441;
+    --red: #e23b2e;
+    --blue: #4f7fc2;
+    --line: #38322a;
+    --display: Impact, Haettenschweiler, "Arial Narrow Bold", "Hiragino Kaku Gothic StdN", sans-serif;
+    --body: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+    --mono: "SF Mono", "Cascadia Mono", Consolas, Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--asphalt);
+    color: var(--chalk);
+    font-family: var(--body);
+    line-height: 1.75;
+    /* コンクリートの粒子 */
+    background-image:
+      radial-gradient(rgba(241, 234, 216, .028) 1px, transparent 1px),
+      radial-gradient(rgba(241, 234, 216, .018) 1px, transparent 1px);
+    background-size: 7px 7px, 11px 11px;
+    background-position: 0 0, 4px 6px;
+  }
+
+  a { color: inherit; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- ティッカー ---------- */
+  .ticker {
+    background: var(--gold);
+    color: #17130c;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 3px solid #000;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+  }
+  .ticker__inner {
+    display: inline-block;
+    padding: 7px 0;
+    animation: ticker 28s linear infinite;
+  }
+  .ticker__inner span { margin: 0 1.4em; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker__inner { animation: none; }
+  }
+
+  /* ---------- マストヘッド ---------- */
+  header.masthead {
+    border-bottom: 3px solid var(--chalk);
+    padding: 40px 0 28px;
+    position: relative;
+  }
+  .masthead__kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .28em;
+    color: var(--gold);
+    margin: 0 0 6px;
+  }
+  .masthead h1 {
+    font-family: var(--display);
+    font-size: clamp(64px, 13vw, 148px);
+    line-height: .88;
+    margin: 0;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    color: var(--chalk);
+    text-shadow: 5px 5px 0 var(--red);
+  }
+  .masthead h1 .thin { color: var(--gold); text-shadow: 5px 5px 0 #000; }
+  .masthead__sub {
+    margin: 14px 0 0;
+    color: var(--chalk-dim);
+    font-size: 14px;
+    max-width: 40em;
+  }
+  .sticker {
+    position: absolute;
+    right: 24px;
+    top: 44px;
+    transform: rotate(7deg);
+    background: var(--red);
+    color: var(--chalk);
+    font-family: var(--display);
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: .06em;
+    padding: 10px 16px;
+    border: 2px solid var(--chalk);
+    box-shadow: 4px 4px 0 #000;
+  }
+
+  nav.crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .14em;
+  }
+  nav.crumbs a {
+    padding: 12px 18px;
+    text-decoration: none;
+    color: var(--chalk-dim);
+    border-right: 1px solid var(--line);
+  }
+  nav.crumbs a:first-child { border-left: 1px solid var(--line); }
+  nav.crumbs a:hover, nav.crumbs a:focus-visible { color: var(--asphalt); background: var(--gold); outline: none; }
+
+  /* ---------- セクション見出し ---------- */
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin: 64px 0 24px;
+  }
+  .section-head h2 {
+    font-family: var(--display);
+    text-transform: uppercase;
+    font-size: clamp(28px, 4.5vw, 44px);
+    letter-spacing: .02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .section-head .jp {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .2em;
+    color: var(--gold);
+  }
+  .section-head::after {
+    content: "";
+    flex: 1;
+    height: 3px;
+    background: repeating-linear-gradient(90deg, var(--chalk) 0 14px, transparent 14px 22px);
+    opacity: .5;
+  }
+
+  /* ---------- ヒーロー特集 ---------- */
+  .hero {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .hero__label {
+    display: inline-block;
+    background: var(--chalk);
+    color: var(--asphalt);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    padding: 4px 10px;
+    margin-bottom: 14px;
+  }
+  .hero h2 {
+    font-family: var(--display);
+    font-size: clamp(34px, 5.5vw, 58px);
+    line-height: 1.06;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .hero h2 em { font-style: normal; color: var(--gold); }
+  .hero p { color: var(--chalk-dim); margin: 0 0 22px; max-width: 36em; }
+  .btn {
+    display: inline-block;
+    font-family: var(--display);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: 16px;
+    text-decoration: none;
+    background: var(--red);
+    color: var(--chalk);
+    padding: 12px 26px;
+    border: 2px solid var(--chalk);
+    box-shadow: 5px 5px 0 #000;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover, .btn:focus-visible { transform: translate(2px, 2px); box-shadow: 3px 3px 0 #000; outline: none; }
+
+  /* レコード盤(CSSのみ) */
+  .vinyl-stage { display: grid; place-items: center; padding: 12px; }
+  .vinyl {
+    width: min(340px, 78vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: relative;
+    background:
+      radial-gradient(circle at 50% 50%,
+        #0a0a0a 0 11.5%,
+        var(--gold) 11.5% 27%,
+        #0a0a0a 27% 28%,
+        #141210 28.5% 100%);
+    box-shadow: 0 0 0 2px #000, 14px 18px 40px rgba(0,0,0,.7);
+    animation: spin 9s linear infinite;
+  }
+  .vinyl::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: repeating-radial-gradient(circle at 50% 50%,
+      transparent 0 5px,
+      rgba(241,234,216,.05) 5px 6px);
+    mask: radial-gradient(circle, transparent 0 29%, #000 30%);
+  }
+  .vinyl::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 20deg,
+      rgba(241,234,216,.16) 0 14deg, transparent 14deg 172deg,
+      rgba(241,234,216,.1) 172deg 190deg, transparent 190deg 360deg);
+    mask: radial-gradient(circle, transparent 0 30%, #000 31%);
+  }
+  .vinyl__hole {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 4%;
+    aspect-ratio: 1;
+    background: var(--asphalt);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #000;
+  }
+  .vinyl__label {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-family: var(--display);
+    text-transform: uppercase;
+    color: #17130c;
+    font-size: 13px;
+    line-height: 1.25;
+    letter-spacing: .04em;
+    width: 23%;
+    height: 23%;
+    margin: auto;
+    border-radius: 50%;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .vinyl { animation: none; } }
+
+  /* ---------- レビュー(クレート) ---------- */
+  .crate {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .record {
+    background: var(--concrete);
+    border: 1px solid var(--line);
+    padding: 20px;
+    position: relative;
+    transition: transform .12s ease;
+  }
+  .record:hover { transform: translateY(-4px) rotate(-.4deg); }
+  .record__cover {
+    aspect-ratio: 1;
+    margin-bottom: 16px;
+    border: 2px solid #000;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-family: var(--display);
+    text-transform: uppercase;
+    line-height: 1.05;
+    padding: 14px;
+    font-size: clamp(20px, 2.6vw, 27px);
+  }
+  .cover--a { background: linear-gradient(135deg, var(--red) 0 55%, #7a1810 55%); color: var(--chalk); }
+  .cover--b { background: repeating-linear-gradient(45deg, var(--gold) 0 18px, #b07f24 18px 36px); color: #17130c; }
+  .cover--c { background: linear-gradient(180deg, var(--blue) 0 60%, #22364f 60%); color: var(--chalk); }
+  .record h3 { margin: 0 0 2px; font-size: 17px; line-height: 1.4; }
+  .record .artist { color: var(--gold); font-family: var(--mono); font-size: 12px; letter-spacing: .12em; margin: 0 0 10px; }
+  .record p.blurb { color: var(--chalk-dim); font-size: 13px; margin: 0 0 14px; }
+  .mics { font-size: 15px; letter-spacing: .3em; color: var(--gold); }
+  .mics .off { color: var(--line); }
+  .record__tag {
+    position: absolute;
+    top: 10px;
+    right: -8px;
+    transform: rotate(4deg);
+    background: var(--chalk);
+    color: var(--asphalt);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    padding: 3px 8px;
+    box-shadow: 3px 3px 0 #000;
+  }
+
+  /* ---------- 4大要素 ---------- */
+  .elements {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .element {
+    border: 2px solid var(--chalk);
+    padding: 22px 18px 20px;
+    background: var(--concrete);
+    box-shadow: 6px 6px 0 #000;
+  }
+  .element:nth-child(2n) { transform: rotate(.5deg); }
+  .element:nth-child(2n+1) { transform: rotate(-.5deg); }
+  .element h3 {
+    font-family: var(--display);
+    text-transform: uppercase;
+    font-size: 24px;
+    margin: 0 0 2px;
+  }
+  .element .jp { font-family: var(--mono); font-size: 11px; letter-spacing: .2em; color: var(--gold); display: block; margin-bottom: 10px; }
+  .element p { font-size: 13px; color: var(--chalk-dim); margin: 0; }
+  .element--mc h3 { color: var(--red); }
+  .element--dj h3 { color: var(--gold); }
+  .element--bboy h3 { color: var(--blue); }
+  .element--graf h3 { color: var(--chalk); }
+
+  /* ---------- イベント ---------- */
+  table.gigs {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  table.gigs th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .2em;
+    color: var(--gold);
+    border-bottom: 2px solid var(--chalk);
+    padding: 0 14px 10px;
+    font-weight: 700;
+  }
+  table.gigs td { padding: 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.gigs td.date { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--chalk); }
+  table.gigs td.venue { color: var(--chalk-dim); }
+  .gigs-scroll { overflow-x: auto; }
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    padding: 2px 8px;
+    border: 1px solid currentColor;
+  }
+  .badge--hot { color: var(--red); }
+  .badge--free { color: var(--gold); }
+
+  /* ---------- 引用 ---------- */
+  .quote {
+    margin: 72px 0;
+    border-left: 6px solid var(--gold);
+    padding: 8px 0 8px 28px;
+  }
+  .quote blockquote {
+    margin: 0;
+    font-family: var(--display);
+    font-size: clamp(24px, 4vw, 40px);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+  .quote cite {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .18em;
+    color: var(--chalk-dim);
+  }
+
+  /* ---------- フッター ---------- */
+  footer {
+    margin-top: 80px;
+    border-top: 3px solid var(--chalk);
+    padding: 28px 0 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .1em;
+    color: var(--chalk-dim);
+  }
+  footer .logo { font-family: var(--display); text-transform: uppercase; font-size: 18px; color: var(--chalk); letter-spacing: .04em; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; }
+    .crate { grid-template-columns: 1fr 1fr; }
+    .elements { grid-template-columns: 1fr 1fr; }
+    .sticker { position: static; display: inline-block; margin-top: 16px; }
+  }
+  @media (max-width: 540px) {
+    .crate { grid-template-columns: 1fr; }
+    .elements { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__inner">
+    <span>REC ▶ 深夜1時、下北沢のブースは満員</span><span>★</span>
+    <span>NEW DROP: 灰街レコーズ『CONCRETE BLOOM』本日解禁</span><span>★</span>
+    <span>B-BOY SUMMIT 東京予選 出場受付中</span><span>★</span>
+    <span>今週のクレート: 90s BOOM BAP 特集</span><span>★</span>
+    <span>REC ▶ 深夜1時、下北沢のブースは満員</span><span>★</span>
+    <span>NEW DROP: 灰街レコーズ『CONCRETE BLOOM』本日解禁</span><span>★</span>
+    <span>B-BOY SUMMIT 東京予選 出場受付中</span><span>★</span>
+    <span>今週のクレート: 90s BOOM BAP 特集</span><span>★</span>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="masthead__kicker">EST. 2026 / TOKYO — STRAIGHT FROM THE STREET</p>
+    <h1>HIPHOP<br><span class="thin">RADAR</span></h1>
+    <p class="masthead__sub">ストリートの温度をそのまま届けるカルチャーマガジン。新譜レビュー、サイファー現場レポート、4大要素のいま——全部ここで鳴ってる。</p>
+    <div class="sticker">VOL.001 DEMO</div>
+  </div>
+</header>
+
+<nav class="crumbs" aria-label="メインメニュー">
+  <div class="wrap" style="display:flex; flex-wrap:wrap;">
+    <a href="#feature">特集</a>
+    <a href="#crate">新譜クレート</a>
+    <a href="#elements">4大要素</a>
+    <a href="#gigs">イベント</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section class="hero" id="feature">
+    <div>
+      <span class="hero__label">FEATURE / 巻頭特集</span>
+      <h2>サンプリングは<br><em>記憶の発掘</em>である</h2>
+      <p>レコード屋の棚の奥、誰も針を落とさなくなった一枚に眠るループ。ビートメイカー10人に聞いた「人生を変えた1小節」と、クレートディギングの現在地。ヴァイナルからストリーミングへ、掘る場所は変わっても掘る理由は変わらない。</p>
+      <a class="btn" href="#crate">記事を読む ▶</a>
+    </div>
+    <div class="vinyl-stage" aria-hidden="true">
+      <div class="vinyl">
+        <div class="vinyl__label">HIPHOP<br>RADAR<br>45 RPM</div>
+        <div class="vinyl__hole"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-head" id="crate">
+    <h2>The Crate</h2>
+    <span class="jp">今週の新譜レビュー</span>
+  </div>
+  <section class="crate">
+    <article class="record">
+      <span class="record__tag">試聴推奨</span>
+      <div class="record__cover cover--a">Concrete<br>Bloom</div>
+      <h3>CONCRETE BLOOM</h3>
+      <p class="artist">灰街レコーズ / HAIGAI RECORDS</p>
+      <p class="blurb">埃っぽいジャズループの上を這う低いフロウ。アスファルトの隙間に咲く花、というタイトル通りの湿度と熱。</p>
+      <div class="mics" aria-label="評価: 5点中4.5点">🎤🎤🎤🎤<span>½</span></div>
+    </article>
+    <article class="record">
+      <span class="record__tag">初登場</span>
+      <div class="record__cover cover--b">Midnight<br>Cypher</div>
+      <h3>MIDNIGHT CYPHER EP</h3>
+      <p class="artist">MC 夜行 / YAKO</p>
+      <p class="blurb">フリースタイルの現場感をそのままパッケージ。2曲目「終電前」のビートスイッチは今年のハイライト級。</p>
+      <div class="mics" aria-label="評価: 5点中4点">🎤🎤🎤🎤<span class="off">🎤</span></div>
+    </article>
+    <article class="record">
+      <span class="record__tag">再発盤</span>
+      <div class="record__cover cover--c">Boom Bap<br>Archive</div>
+      <h3>BOOM BAP ARCHIVE '94</h3>
+      <p class="artist">V.A. / 各アーティスト</p>
+      <p class="blurb">黄金期のドラムがいかに現行のトラップ以降と地続きか、を教えてくれる編集盤。ライナーノーツも必読。</p>
+      <div class="mics" aria-label="評価: 5点中5点">🎤🎤🎤🎤🎤</div>
+    </article>
+  </section>
+
+  <div class="section-head" id="elements">
+    <h2>4 Elements</h2>
+    <span class="jp">ヒップホップの4大要素</span>
+  </div>
+  <section class="elements">
+    <div class="element element--mc">
+      <h3>MC</h3>
+      <span class="jp">ラップ / 言葉</span>
+      <p>マイク1本で場を支配する。韻とフロウ、そして何を語るか。すべては言葉から始まる。</p>
+    </div>
+    <div class="element element--dj">
+      <h3>DJ</h3>
+      <span class="jp">ターンテーブル</span>
+      <p>2枚のレコードでブレイクを永遠にループさせた発明。パーティの心臓部はいつもブースにある。</p>
+    </div>
+    <div class="element element--bboy">
+      <h3>Breaking</h3>
+      <span class="jp">ブレイキン / 身体</span>
+      <p>ダンボールの上が戦場。重力との交渉術は、いまや五輪種目にまで登りつめた。</p>
+    </div>
+    <div class="element element--graf">
+      <h3>Graffiti</h3>
+      <span class="jp">グラフィティ / 視覚</span>
+      <p>街の壁をキャンバスに変える。名前を残すこと、それ自体が存在証明になる文化。</p>
+    </div>
+  </section>
+
+  <div class="quote">
+    <blockquote>「ヒップホップは音楽じゃない。生き方だ。音楽はその報告書にすぎない」</blockquote>
+    <cite>— 編集部が現場で拾った言葉より</cite>
+  </div>
+
+  <div class="section-head" id="gigs">
+    <h2>Gig Guide</h2>
+    <span class="jp">今月のイベント</span>
+  </div>
+  <section class="gigs-scroll">
+    <table class="gigs">
+      <thead>
+        <tr><th>DATE</th><th>EVENT</th><th>VENUE</th><th>INFO</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="date">07.18 FRI</td>
+          <td>真夏のサイファー・ナイト vol.12</td>
+          <td class="venue">下北沢 BASEMENT BAR</td>
+          <td><span class="badge badge--hot">SOLD OUT間近</span></td>
+        </tr>
+        <tr>
+          <td class="date">07.25 FRI</td>
+          <td>B-BOY SUMMIT 東京予選</td>
+          <td class="venue">渋谷 ストリームホール</td>
+          <td><span class="badge badge--free">観覧無料</span></td>
+        </tr>
+        <tr>
+          <td class="date">08.02 SAT</td>
+          <td>灰街レコーズ『CONCRETE BLOOM』リリースパーティ</td>
+          <td class="venue">新宿 ANTIKNOCK</td>
+          <td><span class="badge badge--hot">前売り発売中</span></td>
+        </tr>
+        <tr>
+          <td class="date">08.09 SAT</td>
+          <td>ビートメイカー公開制作バトル「1 LOOP」</td>
+          <td class="venue">秋葉原 MOGRA</td>
+          <td><span class="badge badge--free">出場者募集</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; flex-wrap:wrap; gap:12px 32px; justify-content:space-between; width:100%;">
+    <span class="logo">HIPHOP RADAR</span>
+    <span>DEMO SITE — すべてのアーティスト名・イベントは架空です</span>
+    <span>PEACE / UNITY / LOVE / HAVING FUN</span>
+  </div>
+</footer>
